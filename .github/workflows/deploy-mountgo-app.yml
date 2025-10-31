@@ -66,8 +66,11 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           workingDirectory: .
           command: pages project list
+        continue-on-error: true
 
-      - name: Deploy to Cloudflare Pages (app)
+      - name: Deploy to Cloudflare Pages (app) via wrangler
+        id: try-wrangler-deploy
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -78,3 +81,13 @@ jobs:
             --project-name ${{ inputs.project_name || 'mountgo-app' }}
             --branch main
             --commit-dirty=true
+
+      - name: Fallback deploy via pages-action (legacy)
+        if: steps.try-wrangler-deploy.outcome == 'failure'
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ${{ inputs.project_name || 'mountgo-app' }}
+          directory: build/web
+          wranglerVersion: '4'
