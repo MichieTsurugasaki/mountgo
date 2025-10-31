@@ -1,0 +1,66 @@
+name: yamabiyori_flutter
+description: 晴れの山検索アプリ
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  http: ^1.2.2
+  cloud_firestore: ^6.0.3
+  intl: ^0.20.2
+  table_calendar: ^3.1.1
+  geolocator: ^14.0.2
+  # geocoding: ^3.0.0  # unused currently
+  # permission_handler: ^11.3.1  # unused currently
+
+  # --- Core ---
+  flutter_dotenv: ^6.0.0
+
+  # --- Google Maps 関連 ---
+  google_maps_flutter: ^2.7.0
+  # google_maps_apis: ^1.1.1  # unused currently
+  google_places_flutter: ^2.1.1
+
+  # --- 外部リンク関連 ---
+  url_launcher: ^6.3.0
+
+  # --- UI 拡張用（今後のデザイン改善に使用）---
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.2.3
+  firebase_core: ^4.2.0
+  firebase_storage: ^13.0.3
+
+  # --- Firebase 関連（固定）---
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/mountains.json
+    - assets/config/weights.json
+    - assets/config/airports_jp.json
+    - assets/config/airports_meta.json
+    - assets/config/travel_config.json
+    - .env
+    - .env.production
+    - assets/logo/mountain_connection_logo.png
+    - web/assets/logo/mountain_connection_logo.png
+
+  fonts:
+    - family: NotoSansJP
+      fonts:
+        - asset: assets/fonts/NotoSansJP-Regular.ttf
+        - asset: assets/fonts/NotoSansJP-Bold.ttf
+          weight: 700

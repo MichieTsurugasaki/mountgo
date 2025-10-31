@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.buildlog/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+
+# Builds
+build/
+**/Generated.xcconfig
+**/Pods/
+**/xcuserdata/
+
+# Android/ iOS ビルドキャッシュ
+android/.gradle/
+android/app/build/
+ios/Pods/
+
+# ローカル秘密（絶対コミットしない）
+pages_functions/.dev.vars
+
+# Local env (dev only)
+.env

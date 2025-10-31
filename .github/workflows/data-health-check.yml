@@ -1,0 +1,44 @@
+name: Data Health Check (Firestore Tags)
+
+on:
+  schedule:
+    # 毎日 06:00 JST（前日の21:00 UTC）に実行
+    - cron: '0 21 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: functions
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run tag health check
+        env:
+          # GitHub Secrets に JSON 文字列で保存してください
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          # 重大な不整合の場合に失敗させる
+          STRICT: 'true'
+          # 全ドキュメントに必須タグを要求（現在は「日本百名山」）
+          ENFORCE_HYAKUMEIZAN_FOR_ALL: 'true'
+          REQUIRED_TAG: '日本百名山'
+        run: npm run check:tags
+
+      - name: Upload report artifact (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-health-check-logs
+          path: functions/*.log
+          if-no-files-found: ignore

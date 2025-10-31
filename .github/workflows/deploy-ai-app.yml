@@ -1,0 +1,28 @@
+name: Deploy AI Pages Functions (ai-app)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'pages_functions/**'
+      - '.github/workflows/deploy-ai-app.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Pages (ai-app)
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          projectName: ai-app
+          directory: pages_functions
+          # We deploy a Functions-only project; set build to skip.
+          # Cloudflare will use functions/ as configured by this directory.
+          wranglerVersion: '4'

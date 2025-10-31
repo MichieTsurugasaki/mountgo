@@ -1,0 +1,10 @@
+{
+  "name": "firestore-seed",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "seedMountains.js",
+  "scripts": {},
+  "dependencies": {
+    "firebase": "^11.0.0"
+  }
+}

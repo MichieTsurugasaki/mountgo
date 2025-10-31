@@ -1,0 +1,16 @@
+{
+  "directions": {
+    "coordDecimals": 3
+  },
+  "flight": {
+    "perTransferMinutes": 40,
+    "lowFrequencyThreshold": 30,
+    "lowFrequencyPenaltyPerSide": 10,
+    "bothLowFrequencyExtra": 10,
+    "nonMajorPenaltyPerSide": 10,
+    "regionalHopThresholdKm": 400,
+    "oneMajorTransferKm": 600,
+    "regionalLongTwoTransfersKm": 1200,
+    "majorHubCodes": ["HND", "NRT", "KIX", "ITM", "CTS", "NGO", "FUK", "OKA", "UKB"]
+  }
+}

@@ -1,0 +1,4 @@
+mountain_id,name,name_kana,alt_name,elevation_m,lat,lng,prefectures,range,difficulty,prominence_m,geom_source,description,listings,tags,source_url,license,created_at,updated_at
+JPN200-001,富士山,ふじさん,,3776,35.360625,138.727363,山梨県|静岡県,富士山地,中級,,GSI,日本最高峰の独立峰。夏季は多くの登山者で賑わう。,二百名山|日本百名山,日本百名山,https://example.org/fuji,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+JPN200-002,北岳,きただけ,白根三山,3193,35.677500,138.237222,山梨県,南アルプス,上級,,GSI,日本第二位の標高を誇る南アルプスの盟主。高山植物の宝庫。,二百名山|日本百名山,日本百名山|山小屋,https://example.org/kitadake,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+JPN200-003,槍ヶ岳,やりがたけ,日本のマッターホルン,3180,36.336944,137.646944,長野県,北アルプス,上級,,GSI,鋭い山頂が特徴的な北アルプスのシンボル。登山者憧れの山。,二百名山|日本百名山,日本百名山|山小屋|縦走,https://example.org/yarigatake,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z

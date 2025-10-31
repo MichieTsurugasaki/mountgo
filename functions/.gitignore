@@ -1,0 +1,6 @@
+node_modules/
+*.local
+.env
+*.json
+# Firebase service account key
+gen-lang-client-0636793764-796b85572dd7.json

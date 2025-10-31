@@ -1,0 +1,9 @@
+facility_id,mountain_id,trailhead_id,type,name,distance_km,elevation_m,lat,lng,open_season,winter_closed,capacity,facilities,water_available,emergency_contact,notes,source_url,license,created_at,updated_at
+FAC-001,JPN200-001,JPN200-001-A,トイレ,吉田口五合目公衆トイレ,0,2305,35.404,138.791,7-9月,true,,チップ制200円,無,,,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-002,JPN200-001,JPN200-001-A,山小屋,富士山ホテル,1.5,2700,35.365,138.732,7-9月,true,200,宿泊・食事・売店,有,090-xxxx-xxxx,予約推奨。素泊まり8000円〜,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-003,JPN200-001,JPN200-001-A,トイレ,八合目公衆トイレ,4.0,3100,35.365,138.732,7-9月,true,,チップ制300円,無,,,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-004,JPN200-002,JPN200-002-A,山小屋,北岳山荘,6.5,3000,35.670,138.235,6-10月,false,150,宿泊・食事・売店・テント場,有,0551-xx-xxxx,1泊2食11000円。テント泊2000円。,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-005,JPN200-002,JPN200-002-A,トイレ,北岳山荘トイレ,6.5,3000,35.670,138.235,6-10月,false,,チップ制200円,有,,,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-006,JPN200-003,JPN200-003-A,山小屋,槍ヶ岳山荘,12.0,3060,36.335,137.645,7-10月,false,650,宿泊・食事・売店,有,0263-xx-xxxx,1泊2食12000円。日本最大級の山小屋。,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-007,JPN200-003,JPN200-003-A,トイレ,槍ヶ岳山荘トイレ,12.0,3060,36.335,137.645,7-10月,false,,チップ制200円,有,,,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z
+FAC-008,JPN200-001,,お店,富士山みはらし,0,800,35.488,138.790,通年,false,,土産物・軽食,有,0555-xx-xxxx,五合目レストハウス。下山後の食事に便利。,https://example.org/facility,CC-BY-4.0,2025-10-28T00:00:00Z,2025-10-28T00:00:00Z

@@ -1,0 +1,83 @@
+[
+  {
+    "name": "塔ノ岳",
+    "pref": "神奈川県",
+    "weather": "晴れのち曇り",
+    "rain": "10%",
+    "wind": "2m/s",
+    "access": "2時間30分（車）",
+    "courseTime": "5時間30分",
+    "difficulty": 4,
+    "elevation": "1,491m",
+    "course": "大倉尾根コース",
+    "popularRoute": "大倉〜塔ノ岳 往復",
+    "parking": "あり（50台）",
+    "toilet": "あり（通年）",
+    "options": ["温泉", "山小屋"],
+    "onsen": {
+      "name": "弘法の湯",
+      "desc": "登山の疲れを癒す天然温泉。露天風呂から丹沢の山並みを望む絶景が人気。",
+      "mapUrl": "https://maps.google.com/?q=弘法の湯"
+    },
+    "food": {
+      "name": "丹沢そば",
+      "desc": "地元産のそば粉を使用した香り高いそばが名物。登山客にも人気。",
+      "mapUrl": "https://maps.google.com/?q=丹沢そば"
+    },
+    "image": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "高尾山",
+    "pref": "東京都",
+    "weather": "晴れ",
+    "rain": "0%",
+    "wind": "1m/s",
+    "access": "1時間10分（電車）",
+    "courseTime": "2時間10分",
+    "difficulty": 2,
+    "elevation": "599m",
+    "course": "1号路（表参道コース）",
+    "popularRoute": "清滝駅〜薬王院〜山頂",
+    "parking": "あり（150台）",
+    "toilet": "あり（複数箇所）",
+    "options": ["温泉"],
+    "onsen": {
+      "name": "極楽湯 高尾山温泉",
+      "desc": "高尾山口駅直結の天然温泉。露天風呂から四季の自然を楽しめる。",
+      "mapUrl": "https://maps.google.com/?q=極楽湯+高尾山温泉"
+    },
+    "food": {
+      "name": "とろろそば",
+      "desc": "名物「高尾とろろそば」は登山帰りの定番グルメ。",
+      "mapUrl": "https://maps.google.com/?q=高尾山+とろろそば"
+    },
+    "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "丹沢山",
+    "pref": "神奈川県",
+    "weather": "晴れ時々曇り",
+    "rain": "20%",
+    "wind": "3m/s",
+    "access": "2時間05分（車）",
+    "courseTime": "6時間45分",
+    "difficulty": 5,
+    "elevation": "1,567m",
+    "course": "塔ノ岳経由 丹沢山縦走コース",
+    "popularRoute": "大倉〜塔ノ岳〜丹沢山",
+    "parking": "あり（30台）",
+    "toilet": "あり（季節営業）",
+    "options": ["テント泊", "温泉"],
+    "onsen": {
+      "name": "中川温泉 ぶなの湯",
+      "desc": "山間の秘湯として知られる天然温泉。ぬるめの湯が疲労回復に最適。",
+      "mapUrl": "https://maps.google.com/?q=中川温泉+ぶなの湯"
+    },
+    "food": {
+      "name": "鹿カレー",
+      "desc": "地元猟師が提供するジビエカレーが絶品。登山帰りに人気。",
+      "mapUrl": "https://maps.google.com/?q=丹沢+鹿カレー"
+    },
+    "image": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=60"
+  }
+]

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta name="description" content="次の登山 晴れたらいいね - 登山天気検索アプリ" />
+    <title>次の登山 晴れたらいいね</title>
+
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#FFFFFF" />
+
+    <!-- ✅ Google Maps JavaScript API -->
+    <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEiTVTrhvnqhf0N1YEUsB-FT49g_FgkEQ&libraries=places"
+  async
+  defer>
+</script>
+
+    <style>
+      html, body {
+        margin: 0;
+        height: 100%;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+      .loader {
+        text-align: center;
+        animation: fadeIn 1.5s ease-in;
+      }
+
+      .logo {
+        width: 180px;
+        height: 180px;
+        object-fit: contain;
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #004d40;
+        margin-top: 18px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #666;
+        margin-top: 10px;
+      }
+
+      .spinner {
+        margin: 24px auto 0;
+        border: 4px solid #ccc;
+        border-top: 4px solid #006b63;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin { 100% { transform: rotate(360deg); } }
+      @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ ローディング画面 -->
+    <div id="loading">
+      <div class="loader">
+        <img
+          src="assets/logo/mountain_connection_logo.png"
+          alt="Mountain Connection Logo"
+          class="logo"
+        />
+        <div class="title">次の登山 晴れたらいいね</div>
+        <div class="subtitle">空のご機嫌をチェックしています...</div>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!-- ✅ Flutterエンジン読み込み -->
+    <script src="flutter.js" defer></script>
+    <script>
+      window.addEventListener("load", function () {
+        // ✅ Flutter 3.35以降の新構文
+        if (!window._flutter || !window._flutter.loader) {
+          console.error("❌ Flutter loader not found. flutter.js が正しく読み込まれていません。");
+          return;
+        }
+
+        window._flutter.loader
+          .loadEntrypoint({
+            serviceWorker: { serviceWorkerVersion: null },
+            onEntrypointLoaded: async function (engineInitializer) {
+              const appRunner = await engineInitializer.initializeEngine();
+              document.getElementById("loading").style.display = "none";
+              await appRunner.runApp();
+            },
+          })
+          .catch((err) => console.error("Flutter init error:", err));
+      });
+    </script>
+  </body>
+</html>

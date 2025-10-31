@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "458368304727",
+    "project_id": "yamabiyori",
+    "storage_bucket": "yamabiyori.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458368304727:android:b48e750db41cde020c8512",
+        "android_client_info": {
+          "package_name": "com.example.yamabiyori_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_iFqThifDiZp-gJ-3lk5JovIqCRSgQ9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458368304727:android:b768ffc694a8af0f0c8512",
+        "android_client_info": {
+          "package_name": "com.mycompany.yamabiyori"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_iFqThifDiZp-gJ-3lk5JovIqCRSgQ9c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
