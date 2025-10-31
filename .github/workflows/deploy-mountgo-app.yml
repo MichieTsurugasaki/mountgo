@@ -9,6 +9,7 @@ on:
       - 'assets/**'
       - 'pubspec.yaml'
       - '.github/workflows/deploy-mountgo-app.yml'
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
