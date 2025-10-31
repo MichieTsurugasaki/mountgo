@@ -53,7 +53,6 @@ flutter:
     - assets/config/airports_jp.json
     - assets/config/airports_meta.json
     - assets/config/travel_config.json
-    - .env
     - .env.production
     - assets/logo/mountain_connection_logo.png
     - web/assets/logo/mountain_connection_logo.png
