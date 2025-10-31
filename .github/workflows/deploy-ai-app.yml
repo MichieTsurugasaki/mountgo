@@ -24,6 +24,8 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: ai-app
           directory: pages_functions
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
           # We deploy a Functions-only project; set build to skip.
           # Cloudflare will use functions/ as configured by this directory.
           wranglerVersion: '4'
