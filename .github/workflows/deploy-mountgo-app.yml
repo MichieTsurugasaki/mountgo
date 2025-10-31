@@ -75,9 +75,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          workingDirectory: .
+          workingDirectory: build/web
           command: >-
-            pages deploy build/web --verbose
+            pages deploy . --verbose
             --project-name ${{ inputs.project_name || 'mountgo-app' }}
             --branch main
             --commit-dirty=true
@@ -89,5 +89,6 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: ${{ inputs.project_name || 'mountgo-app' }}
-          directory: build/web
+          workingDirectory: build/web
+          directory: .
           wranglerVersion: '4'
