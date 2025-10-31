@@ -13,19 +13,37 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to Cloudflare Pages (ai-app)
-        uses: cloudflare/pages-action@v1
+      - name: Ensure Pages project exists (ai-app)
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: ai-app
-          directory: pages_functions
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          # We deploy a Functions-only project; set build to skip.
-          # Cloudflare will use functions/ as configured by this directory.
-          wranglerVersion: '4'
+          workingDirectory: pages_functions
+          command: >-
+            pages project create ai-app
+            --production-branch main
+            --skip-guided-setup
+        continue-on-error: true
+
+      - name: Deploy Pages Functions (ai-app)
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          workingDirectory: pages_functions
+          command: >-
+            pages deploy .
+            --project-name ai-app
+            --branch main
+
+      - name: Output deployment URL
+        if: always()
+        run: |
+          echo "Deployment finished."
+          echo "Note: Configure GEMINI_API_KEY in Cloudflare Pages (Project: ai-app) for the API routes to work."
