@@ -1,4 +1,4 @@
-name: Deploy App (mountgo-app)
+name: Deploy MountGo App (mountgo-app)
 
 on:
   push:
@@ -10,12 +10,18 @@ on:
       - 'pubspec.yaml'
       - '.github/workflows/deploy-mountgo-app.yml'
   workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Cloudflare Pages project name (default: mountgo-app)"
+        required: false
+        default: "mountgo-app"
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      deployments: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,11 +38,31 @@ jobs:
       - name: Build Flutter Web (release)
         run: flutter build web --release --base-href "/"
 
-      - name: Deploy to Cloudflare Pages (mountgo-app)
-        uses: cloudflare/pages-action@v1
+      - name: Ensure Pages project exists (app)
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: mountgo-app
-          directory: build/web
-          wranglerVersion: '4'
+          command: >-
+            pages project create ${{ inputs.project_name || 'mountgo-app' }}
+            --production-branch main
+            --skip-guided-setup
+        continue-on-error: true
+
+      - name: List Pages projects (debug)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages project list
+
+      - name: Deploy to Cloudflare Pages (app)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: >-
+            pages deploy build/web
+            --project-name ${{ inputs.project_name || 'mountgo-app' }}
+            --branch main
+            --commit-dirty=true
