@@ -30,6 +30,14 @@ jobs:
             --skip-guided-setup
         continue-on-error: true
 
+      - name: List existing Pages projects (debug)
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          workingDirectory: pages_functions
+          command: pages project list
+
       - name: Deploy Pages Functions (ai-app)
         id: deploy
         uses: cloudflare/wrangler-action@v3
@@ -38,9 +46,10 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           workingDirectory: pages_functions
           command: >-
-            pages deploy .
+            pages deploy public
             --project-name ai-app
             --branch main
+            --commit-dirty=true
 
       - name: Output deployment URL
         if: always()
