@@ -25,3 +25,16 @@ pages_functions/.dev.vars
 
 # Local env (dev only)
 .env
+
+# Node / Cloudflare Pages artifacts (do not commit)
+pages_functions/.wrangler/
+pages_functions/node_modules/
+firestore-seed/node_modules/
+
+# IDE/Editor configs (optional)
+.idea/
+.vscode/
+
+# Logs
+*.log
+functions/*.log

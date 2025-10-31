@@ -35,8 +35,19 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      - name: Build Flutter Web (release, html renderer)
-        run: flutter build web --release --base-href "/" --web-renderer html
+      - name: Build Flutter Web (release, prefer html renderer)
+        shell: bash
+        run: |
+          set -euo pipefail
+          flutter --version
+          # Some runners may have an older flutter that lacks --web-renderer
+          if flutter build web -h | grep -q "--web-renderer"; then
+            echo "Using --web-renderer html"
+            flutter build web --release --base-href "/" --web-renderer html
+          else
+            echo "--web-renderer not supported by this Flutter. Building with defaults."
+            flutter build web --release --base-href "/"
+          fi
 
       - name: Inspect build output (debug)
         run: |

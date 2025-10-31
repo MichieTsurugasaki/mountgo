@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// アプリ共通のテーマ定義（Material 3 / 非推奨API非使用）
 class AppTheme {
@@ -12,12 +13,11 @@ class AppTheme {
       brightness: Brightness.light,
     );
 
-    return ThemeData(
+    final base = ThemeData(
       useMaterial3: true,
       colorScheme: scheme,
       // 旧 background は非推奨。明示的に surface / surfaceContainer を使う
       scaffoldBackgroundColor: scheme.surface,
-      fontFamily: 'NotoSansJP',
       textTheme: const TextTheme(
         titleLarge: TextStyle(fontWeight: FontWeight.w700),
         bodyMedium: TextStyle(height: 1.6),
@@ -63,6 +63,11 @@ class AppTheme {
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
+    );
+
+    // Google Fonts (Noto Sans JP) を適用。Web では WOFF2 が配信され初回サイズを削減。
+    return base.copyWith(
+      textTheme: GoogleFonts.notoSansJpTextTheme(base.textTheme),
     );
   }
 
