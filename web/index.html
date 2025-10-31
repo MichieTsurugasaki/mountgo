@@ -12,12 +12,10 @@
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#FFFFFF" />
 
-    <!-- ✅ Google Maps JavaScript API -->
-    <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEiTVTrhvnqhf0N1YEUsB-FT49g_FgkEQ&libraries=places"
-  async
-  defer>
-</script>
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Maps JS is heavy; load lazily from the page that actually needs it (plugin will inject) -->
 
     <style>
       html, body {

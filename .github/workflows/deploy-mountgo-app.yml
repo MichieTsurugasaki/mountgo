@@ -35,8 +35,8 @@ jobs:
       - name: Flutter pub get
         run: flutter pub get
 
-      - name: Build Flutter Web (release)
-        run: flutter build web --release --base-href "/"
+      - name: Build Flutter Web (release, html renderer)
+        run: flutter build web --release --base-href "/" --web-renderer html
 
       - name: Inspect build output (debug)
         run: |
