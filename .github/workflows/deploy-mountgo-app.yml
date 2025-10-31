@@ -38,11 +38,21 @@ jobs:
       - name: Build Flutter Web (release)
         run: flutter build web --release --base-href "/"
 
+      - name: Inspect build output (debug)
+        run: |
+          echo "PWD=$(pwd)"
+          ls -la
+          echo "---- build/web ----"
+          ls -la build/web || true
+          echo "---- index.html head ----"
+          head -n 40 build/web/index.html || true
+
       - name: Ensure Pages project exists (app)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          workingDirectory: .
           command: >-
             pages project create ${{ inputs.project_name || 'mountgo-app' }}
             --production-branch main
@@ -54,6 +64,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          workingDirectory: .
           command: pages project list
 
       - name: Deploy to Cloudflare Pages (app)
@@ -61,8 +72,9 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          workingDirectory: .
           command: >-
-            pages deploy build/web
+            pages deploy build/web --verbose
             --project-name ${{ inputs.project_name || 'mountgo-app' }}
             --branch main
             --commit-dirty=true
