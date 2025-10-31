@@ -1,4 +1,4 @@
-name: Deploy AI Pages Functions (ai-app)
+name: Deploy AI Pages Functions (proxy)
 
 on:
   push:
@@ -7,6 +7,11 @@ on:
       - 'pages_functions/**'
       - '.github/workflows/deploy-ai-app.yml'
   workflow_dispatch:
+    inputs:
+      project_name:
+        description: "Cloudflare Pages project name (default: ai-app)"
+        required: false
+        default: "ai-app"
 
 jobs:
   deploy:
@@ -25,7 +30,7 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           workingDirectory: pages_functions
           command: >-
-            pages project create ai-app
+            pages project create ${{ inputs.project_name || 'ai-app' }}
             --production-branch main
             --skip-guided-setup
         continue-on-error: true
@@ -38,7 +43,7 @@ jobs:
           workingDirectory: pages_functions
           command: pages project list
 
-      - name: Deploy Pages Functions (ai-app)
+      - name: Deploy Pages Functions
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
@@ -47,7 +52,7 @@ jobs:
           workingDirectory: pages_functions
           command: >-
             pages deploy public
-            --project-name ai-app
+            --project-name ${{ inputs.project_name || 'ai-app' }}
             --branch main
             --commit-dirty=true
 
